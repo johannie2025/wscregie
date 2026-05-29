@@ -42,7 +42,7 @@ jobs:
       - name: 🧹 Clean
         run: ./gradlew clean --no-daemon
         
-        - name: Create Placeholder Launch Icons for AAPT2
+      - name: Create Placeholder Launch Icons for AAPT2
         run: |
           # Création du dossier mipmap de base s'il n'existe pas
           MIPMAP_DIR="app/src/main/res/mipmap-mdpi"
