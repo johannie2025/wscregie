@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- RegieActivity – Layout principal
+     Architecture : TopBar + Corps (Split) + PanelBas + BottomNav
+     Prophète Josias – Wise Design -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_deep">
+
+    <!-- ══════════════════════════════════════════════
+         TOPBAR
+    ══════════════════════════════════════════════ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/bg_panel"
+        android:paddingStart="12dp"
+        android:paddingEnd="8dp"
+        android:gravity="center_vertical">
+
+        <!-- Logo + nom -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="horizontal" android:gravity="center_vertical">
+            <ImageView android:layout_width="22dp" android:layout_height="22dp"
+                android:src="@drawable/ic_broadcast" android:tint="@color/accent_blue"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="ELITE" android:textColor="@color/text_white" android:textSize="15sp"
+                android:textStyle="bold" android:fontFamily="@font/rajdhani_bold"
+                android:letterSpacing="0.1" android:layout_marginStart="6dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="CAST" android:textColor="@color/accent_red" android:textSize="15sp"
+                android:textStyle="bold" android:fontFamily="@font/rajdhani_bold"
+                android:letterSpacing="0.1"/>
+        </LinearLayout>
+
+        <!-- IP Régie -->
+        <TextView
+            android:id="@+id/tv_ip_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:text="📡 —"
+            android:textSize="10sp"
+            android:textColor="@color/accent_blue"
+            android:fontFamily="monospace"
+            android:background="@drawable/badge_panel"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:gravity="center"/>
+
+        <!-- Compteur écrans -->
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginStart="8dp">
+            <View android:id="@+id/ws_status_dot" android:layout_width="8dp" android:layout_height="8dp"
+                android:background="@drawable/dot_orange" android:layout_marginEnd="4dp"/>
+            <TextView android:id="@+id/tv_screen_count" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="0 écran(s)"
+                android:textSize="10sp" android:textColor="@color/text_light"/>
+        </LinearLayout>
+
+        <!-- Licence info -->
+        <TextView
+            android:id="@+id/tv_license_info"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:text="🆓 Essai"
+            android:textSize="10sp"
+            android:textColor="@color/text_dim"
+            android:background="@drawable/badge_panel"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:gravity="center"
+            android:layout_marginStart="6dp"/>
+
+        <!-- Bouton Admin (caché si pas admin) -->
+        <ImageButton
+            android:id="@+id/btn_admin"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:src="@drawable/ic_admin"
+            android:tint="@color/accent_gold"
+            android:background="@android:color/transparent"
+            android:contentDescription="Admin"
+            android:visibility="gone"
+            android:layout_marginStart="4dp"/>
+
+        <!-- Paramètres -->
+        <ImageButton
+            android:id="@+id/btn_settings"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:src="@drawable/ic_settings"
+            android:tint="@color/text_dim"
+            android:background="@android:color/transparent"
+            android:contentDescription="Paramètres"/>
+
+    </LinearLayout>
+
+    <!-- ══════════════════════════════════════════════
+         CORPS PRINCIPAL
+    ══════════════════════════════════════════════ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <!-- ── SIDEBAR GAUCHE (panneaux Bible/Chants/Médias/Écrans) ── -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@color/bg_panel">
+
+            <!-- Bible -->
+            <LinearLayout android:id="@+id/panel_bible"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:padding="10dp" android:visibility="visible">
+
+                <!-- Version pills -->
+                <LinearLayout android:id="@+id/version_row"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="8dp">
+                    <Button android:layout_width="0dp" android:layout_height="28dp"
+                        android:layout_weight="1" android:textSize="10sp" android:text="LSG"
+                        android:background="@drawable/btn_pill_selected"
+                        style="@style/Widget.Material3.Button.TextButton" android:textColor="@color/accent_light"/>
+                    <Button android:layout_width="0dp" android:layout_height="28dp"
+                        android:layout_weight="1" android:textSize="10sp" android:text="NBS"
+                        android:background="@drawable/btn_pill_outline"
+                        style="@style/Widget.Material3.Button.TextButton" android:textColor="@color/text_dim"
+                        android:layout_marginStart="4dp"/>
+                    <Button android:layout_width="0dp" android:layout_height="28dp"
+                        android:layout_weight="1" android:textSize="10sp" android:text="RVR60"
+                        android:background="@drawable/btn_pill_outline"
+                        style="@style/Widget.Material3.Button.TextButton" android:textColor="@color/text_dim"
+                        android:layout_marginStart="4dp"/>
+                    <Button android:layout_width="0dp" android:layout_height="28dp"
+                        android:layout_weight="1" android:textSize="10sp" android:text="KJV"
+                        android:background="@drawable/btn_pill_outline"
+                        style="@style/Widget.Material3.Button.TextButton" android:textColor="@color/text_dim"
+                        android:layout_marginStart="4dp"/>
+                </LinearLayout>
+
+                <!-- Recherche -->
+                <EditText android:id="@+id/et_verse_search"
+                    android:layout_width="match_parent" android:layout_height="38dp"
+                    android:hint="Rechercher…" android:textSize="12sp"
+                    android:background="@drawable/input_bg"
+                    android:textColor="@color/text_white" android:textColorHint="@color/text_dim"
+                    android:paddingStart="12dp" android:paddingEnd="12dp"
+                    android:layout_marginBottom="8dp" android:inputType="text"
+                    android:singleLine="true"/>
+
+                <!-- Liste versets -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_verses"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:clipToPadding="false"/>
+            </LinearLayout>
+
+            <!-- Chants -->
+            <LinearLayout android:id="@+id/panel_songs"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:padding="10dp" android:visibility="gone">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_songs"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ScrollView android:layout_width="match_parent" android:layout_height="160dp"
+                    android:layout_marginTop="8dp">
+                    <LinearLayout android:id="@+id/slides_container"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:visibility="gone"/>
+                </ScrollView>
+            </LinearLayout>
+
+            <!-- Médias -->
+            <LinearLayout android:id="@+id/panel_media"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:padding="10dp" android:visibility="gone">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🎬 Fond vidéo / RTSP" android:textColor="@color/text_dim"
+                    android:textSize="11sp" android:layout_marginBottom="8dp"/>
+                <EditText android:id="@+id/et_rtsp_url"
+                    android:layout_width="match_parent" android:layout_height="40dp"
+                    android:hint="rtsp://192.168.1.x:554/live"
+                    android:background="@drawable/input_bg"
+                    android:textColor="@color/text_white" android:textColorHint="@color/text_dim"
+                    android:paddingStart="12dp" android:paddingEnd="12dp"
+                    android:fontFamily="monospace" android:textSize="11sp"
+                    android:layout_marginBottom="8dp"/>
+                <Button android:id="@+id/btn_send_rtsp"
+                    android:layout_width="match_parent" android:layout_height="40dp"
+                    android:text="▶ Envoyer flux RTSP"
+                    android:textSize="12sp"
+                    android:background="@drawable/btn_primary_bg"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="8dp"/>
+                <Button android:id="@+id/btn_stop_media"
+                    android:layout_width="match_parent" android:layout_height="38dp"
+                    android:text="⏹ Arrêter fond"
+                    android:textSize="12sp"
+                    android:background="@drawable/btn_outline_bg"
+                    android:textColor="@color/text_light"/>
+            </LinearLayout>
+
+            <!-- Écrans -->
+            <LinearLayout android:id="@+id/panel_screens"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:padding="10dp" android:visibility="gone">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_screens"
+                    android:layout_width="match_parent" android:layout_height="0dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ── ZONE DROITE (Aperçu + Contrôles) ── -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.3"
+            android:orientation="vertical"
+            android:background="@color/bg_deep">
+
+            <!-- APERÇU LIVE -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🔴 APERÇU LIVE" android:textColor="@color/text_dim"
+                android:textSize="9sp" android:fontFamily="@font/rajdhani_bold"
+                android:letterSpacing="0.2" android:paddingStart="12dp" android:paddingTop="8dp"/>
+
+            <FrameLayout android:id="@+id/preview_frame"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:background="@drawable/preview_bg">
+
+                <!-- Fond simulé -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:background="@drawable/preview_gradient" android:gravity="center"
+                    android:orientation="vertical" android:padding="16dp">
+                    <TextView android:id="@+id/prev_verse_text"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:gravity="center" android:textColor="#FFFFFFFF"
+                        android:textSize="14sp" android:fontFamily="@font/rajdhani"
+                        android:lineSpacingMultiplier="1.3" android:shadowColor="#000"
+                        android:shadowRadius="6" android:shadowDx="1" android:shadowDy="1"/>
+                    <TextView android:id="@+id/prev_verse_ref"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:gravity="center" android:textColor="#AAFFFFFF"
+                        android:textSize="10sp" android:layout_marginTop="8dp"/>
+                </LinearLayout>
+
+                <!-- Lower Third preview -->
+                <LinearLayout android:id="@+id/prev_lower_third"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_gravity="bottom" android:background="@drawable/lt_bg"
+                    android:orientation="vertical" android:padding="8dp"
+                    android:visibility="gone">
+                    <TextView android:id="@+id/prev_lt_title"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"/>
+                    <TextView android:id="@+id/prev_lt_sub"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#CCFFFFFF" android:textSize="9sp"/>
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- BOUTON PRINCIPAL DIFFUSER -->
+            <Button android:id="@+id/btn_send_now"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="📡 DIFFUSER"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:background="@drawable/btn_broadcast_bg"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="6dp"/>
+
+            <!-- CONTRÔLES LIGNE 1 -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:paddingStart="8dp" android:paddingEnd="8dp"
+                android:layout_marginBottom="6dp">
+                <Button android:id="@+id/btn_prev"
+                    android:layout_width="0dp" android:layout_height="36dp"
+                    android:layout_weight="1" android:text="◀ Préc."
+                    android:textSize="11sp" android:background="@drawable/btn_outline_bg"
+                    android:textColor="@color/text_light" android:layout_marginEnd="4dp"/>
+                <Button android:id="@+id/btn_clear"
+                    android:layout_width="0dp" android:layout_height="36dp"
+                    android:layout_weight="1" android:text="Effacer"
+                    android:textSize="11sp" android:background="@drawable/btn_outline_bg"
+                    android:textColor="@color/text_light" android:layout_marginEnd="4dp"/>
+                <Button android:id="@+id/btn_blackout"
+                    android:layout_width="0dp" android:layout_height="36dp"
+                    android:layout_weight="1" android:text="⬛ Noir"
+                    android:textSize="11sp" android:background="@drawable/btn_danger_bg"
+                    android:textColor="#FFFFFF" android:layout_marginEnd="4dp"/>
+                <Button android:id="@+id/btn_next"
+                    android:layout_width="0dp" android:layout_height="36dp"
+                    android:layout_weight="1" android:text="Suiv. ▶"
+                    android:textSize="11sp" android:background="@drawable/btn_outline_bg"
+                    android:textColor="@color/text_light"/>
+            </LinearLayout>
+
+            <!-- TRANSITIONS -->
+            <LinearLayout android:id="@+id/transition_row"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:paddingStart="8dp" android:paddingEnd="8dp"
+                android:layout_marginBottom="6dp">
+                <Button android:layout_width="0dp" android:layout_height="30dp"
+                    android:layout_weight="1" android:textSize="10sp"
+                    android:background="@drawable/btn_pill_selected" android:textColor="@color/accent_light"/>
+                <Button android:layout_width="0dp" android:layout_height="30dp"
+                    android:layout_weight="1" android:textSize="10sp"
+                    android:background="@drawable/btn_pill_outline" android:textColor="@color/text_dim"
+                    android:layout_marginStart="4dp"/>
+                <Button android:layout_width="0dp" android:layout_height="30dp"
+                    android:layout_weight="1" android:textSize="10sp"
+                    android:background="@drawable/btn_pill_outline" android:textColor="@color/text_dim"
+                    android:layout_marginStart="4dp"/>
+            </LinearLayout>
+
+            <!-- LOWER THIRD -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:paddingStart="8dp" android:paddingEnd="8dp"
+                android:layout_marginBottom="4dp">
+                <EditText android:id="@+id/et_lt_title"
+                    android:layout_width="match_parent" android:layout_height="36dp"
+                    android:hint="Banc-titre…" android:textSize="12sp"
+                    android:background="@drawable/input_bg" android:textColor="@color/text_white"
+                    android:textColorHint="@color/text_dim" android:paddingStart="10dp"
+                    android:paddingEnd="10dp" android:layout_marginBottom="4dp" android:singleLine="true"/>
+                <EditText android:id="@+id/et_lt_sub"
+                    android:layout_width="match_parent" android:layout_height="34dp"
+                    android:hint="Sous-titre…" android:textSize="11sp"
+                    android:background="@drawable/input_bg" android:textColor="@color/text_white"
+                    android:textColorHint="@color/text_dim" android:paddingStart="10dp"
+                    android:paddingEnd="10dp" android:singleLine="true"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginTop="4dp">
+                    <Button android:id="@+id/btn_send_lt"
+                        android:layout_width="0dp" android:layout_height="32dp"
+                        android:layout_weight="1" android:text="▶ Afficher"
+                        android:textSize="11sp" android:background="@drawable/btn_primary_bg"
+                        android:textColor="#FFFFFF" android:layout_marginEnd="4dp"/>
+                    <Button android:id="@+id/btn_hide_lt"
+                        android:layout_width="36dp" android:layout_height="32dp"
+                        android:text="✕" android:textSize="12sp"
+                        android:background="@drawable/btn_outline_bg" android:textColor="@color/text_dim"
+                        android:layout_marginEnd="4dp"/>
+                    <Button android:id="@+id/btn_lt_pasteur"
+                        android:layout_width="0dp" android:layout_height="32dp"
+                        android:layout_weight="1" android:text="👤"
+                        android:textSize="14sp" android:background="@drawable/btn_pill_outline"
+                        android:layout_marginEnd="4dp"/>
+                    <Button android:id="@+id/btn_lt_chorale"
+                        android:layout_width="0dp" android:layout_height="32dp"
+                        android:layout_weight="1" android:text="🎵"
+                        android:textSize="14sp" android:background="@drawable/btn_pill_outline"
+                        android:layout_marginEnd="4dp"/>
+                    <Button android:id="@+id/btn_lt_annonce"
+                        android:layout_width="0dp" android:layout_height="32dp"
+                        android:layout_weight="1" android:text="📢"
+                        android:textSize="14sp" android:background="@drawable/btn_pill_outline"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- CIBLE (écrans) -->
+            <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:paddingStart="8dp" android:paddingEnd="8dp" android:layout_marginBottom="4dp"
+                android:scrollbars="none">
+                <LinearLayout android:id="@+id/target_row"
+                    android:layout_width="wrap_content" android:layout_height="28dp"
+                    android:orientation="horizontal"/>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ══════════════════════════════════════════════
+         BOTTOM NAVIGATION
+    ══════════════════════════════════════════════ -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/bg_panel"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:labelVisibilityMode="labeled"/>
+
+</LinearLayout>

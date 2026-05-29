@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_bible"
+        android:icon="@drawable/ic_bible"
+        android:title="@string/nav_bible"/>
+    <item android:id="@+id/nav_songs"
+        android:icon="@drawable/ic_music"
+        android:title="@string/nav_songs"/>
+    <item android:id="@+id/nav_media"
+        android:icon="@drawable/ic_media"
+        android:title="@string/nav_media"/>
+    <item android:id="@+id/nav_screens"
+        android:icon="@drawable/ic_screens"
+        android:title="@string/nav_screens"/>
+</menu>

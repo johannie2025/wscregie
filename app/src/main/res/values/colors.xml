@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ── Thème Bleu/Blanc (défaut) ── -->
+    <color name="bg_deep">#050D1A</color>
+    <color name="bg_panel">#0B1A2E</color>
+    <color name="bg_card">#112240</color>
+    <color name="bg_elevated">#1A3055</color>
+    <color name="accent_blue">#1565C0</color>
+    <color name="accent_mid">#1E88E5</color>
+    <color name="accent_light">#42A5F5</color>
+    <color name="accent_red">#D32F2F</color>
+    <color name="accent_red2">#FF1744</color>
+    <color name="accent_gold">#FFC107</color>
+    <color name="text_white">#F0F4FF</color>
+    <color name="text_light">#90A4AE</color>
+    <color name="text_dim">#546E7A</color>
+    <color name="success">#00C853</color>
+    <color name="warning">#FFB300</color>
+    <color name="border">#1A3055</color>
+
+    <!-- ── Thème Sombre ── -->
+    <color name="dark_bg_deep">#080A0F</color>
+    <color name="dark_bg_panel">#0F1219</color>
+    <color name="dark_bg_card">#161B28</color>
+    <color name="dark_accent">#7C3AED</color>
+    <color name="dark_accent2">#A78BFA</color>
+
+    <!-- ── Thème Bleu/Rouge ── -->
+    <color name="br_bg">#0A0A14</color>
+    <color name="br_panel">#0F0F20</color>
+    <color name="br_accent">#2563EB</color>
+    <color name="br_red">#EF4444</color>
+
+    <!-- Navigation -->
+    <color name="nav_selected">#1E88E5</color>
+    <color name="nav_unselected">#546E7A</color>
+
+    <!-- Material -->
+    <color name="colorPrimary">#1565C0</color>
+    <color name="colorPrimaryDark">#0D47A1</color>
+    <color name="colorAccent">#1E88E5</color>
+</resources>

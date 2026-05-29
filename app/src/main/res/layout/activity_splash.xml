@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Écran Splash / Login EliteCast Régie
+     Design Bleu profond + Blanc + Rouge accent
+     Prophète Josias – Wise Design -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_deep"
+    android:gravity="center">
+
+    <!-- LOGO CONTAINER -->
+    <LinearLayout
+        android:id="@+id/splash_logo_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="40dp">
+
+        <!-- Icône broadcast stylisée -->
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_broadcast"
+            android:tint="@color/accent_blue"
+            android:layout_gravity="center"/>
+
+        <!-- Nom de l'app -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ELITECAST"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_white"
+            android:letterSpacing="0.15"
+            android:fontFamily="@font/rajdhani_bold"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RÉGIE PRO"
+            android:textSize="14sp"
+            android:textColor="@color/accent_red"
+            android:letterSpacing="0.25"
+            android:fontFamily="@font/rajdhani"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wise Design · Prophète Josias"
+            android:textSize="11sp"
+            android:textColor="@color/text_dim"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+
+    <!-- SÉLECTEURS LANGUE + THÈME -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="24dp">
+
+        <LinearLayout
+            android:id="@+id/lang_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="8dp">
+            <Button android:layout_width="52dp" android:layout_height="32dp"
+                android:textSize="11sp" android:background="@drawable/btn_pill_outline"
+                android:textColor="@color/text_white" android:text="FR"
+                style="@style/Widget.Material3.Button.TextButton"/>
+            <Button android:layout_width="52dp" android:layout_height="32dp"
+                android:textSize="11sp" android:background="@drawable/btn_pill_outline"
+                android:textColor="@color/text_white" android:text="EN"
+                android:layout_marginStart="6dp"
+                style="@style/Widget.Material3.Button.TextButton"/>
+            <Button android:layout_width="52dp" android:layout_height="32dp"
+                android:textSize="11sp" android:background="@drawable/btn_pill_outline"
+                android:textColor="@color/text_white" android:text="ES"
+                android:layout_marginStart="6dp"
+                style="@style/Widget.Material3.Button.TextButton"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/theme_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button android:layout_width="40dp" android:layout_height="32dp"
+                android:textSize="16sp" android:text="☀️"
+                android:background="@drawable/btn_pill_outline"
+                style="@style/Widget.Material3.Button.TextButton"/>
+            <Button android:layout_width="40dp" android:layout_height="32dp"
+                android:textSize="16sp" android:text="🌙"
+                android:background="@drawable/btn_pill_outline"
+                android:layout_marginStart="6dp"
+                style="@style/Widget.Material3.Button.TextButton"/>
+            <Button android:layout_width="40dp" android:layout_height="32dp"
+                android:textSize="16sp" android:text="🔴"
+                android:background="@drawable/btn_pill_outline"
+                android:layout_marginStart="6dp"
+                style="@style/Widget.Material3.Button.TextButton"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- PANEL AUTH (boutons principaux) -->
+    <LinearLayout
+        android:id="@+id/auth_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:visibility="invisible">
+
+        <!-- Bouton Connexion Pro -->
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Se connecter"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:background="@drawable/btn_primary_bg"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Bouton Essai Gratuit -->
+        <Button
+            android:id="@+id/btn_trial"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Essai gratuit"
+            android:textSize="14sp"
+            android:background="@drawable/btn_outline_bg"
+            android:textColor="@color/text_light"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="@color/text_dim"
+            android:text="EliteCast Régie v1.0"/>
+    </LinearLayout>
+
+    <!-- FORMULAIRE LOGIN -->
+    <LinearLayout
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="28dp"
+        android:paddingEnd="28dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_login_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Connexion"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_white"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Identifiant -->
+        <EditText
+            android:id="@+id/et_login"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Identifiant"
+            android:inputType="text"
+            android:background="@drawable/input_bg"
+            android:textColor="@color/text_white"
+            android:textColorHint="@color/text_dim"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Mot de passe avec toggle -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp">
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Mot de passe (admin)"
+                android:inputType="textPassword"
+                android:background="@drawable/input_bg"
+                android:textColor="@color/text_white"
+                android:textColorHint="@color/text_dim"
+                android:paddingStart="14dp"
+                android:paddingEnd="48dp"/>
+            <ImageView
+                android:id="@+id/iv_toggle_password"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_eye"
+                android:padding="4dp"
+                android:tint="@color/text_dim"/>
+        </FrameLayout>
+
+        <!-- Clé de licence -->
+        <EditText
+            android:id="@+id/et_license"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Clé de licence (ex: ECPRO-XXXXXX-...)"
+            android:inputType="textCapCharacters"
+            android:background="@drawable/input_bg"
+            android:textColor="@color/text_white"
+            android:textColorHint="@color/text_dim"
+            android:fontFamily="monospace"
+            android:textSize="12sp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:layout_marginBottom="6dp"/>
+
+        <!-- Erreur -->
+        <TextView
+            android:id="@+id/tv_login_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/accent_red"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_submit_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Connexion"
+            android:textStyle="bold"
+            android:background="@drawable/btn_primary_bg"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btn_back_auth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Retour"
+            android:textColor="@color/text_dim"
+            android:background="@android:color/transparent"
+            android:textSize="12sp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+</LinearLayout>

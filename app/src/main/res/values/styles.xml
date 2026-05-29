@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ══════════════════════════════════════════
+         THÈME 1 : BLEU / BLANC (défaut)
+    ══════════════════════════════════════════ -->
+    <style name="Theme.EliteCast" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/accent_blue</item>
+        <item name="colorPrimaryVariant">@color/accent_mid</item>
+        <item name="colorOnPrimary">@color/text_white</item>
+        <item name="colorSecondary">@color/accent_light</item>
+        <item name="colorSurface">@color/bg_panel</item>
+        <item name="colorOnSurface">@color/text_white</item>
+        <item name="android:windowBackground">@color/bg_deep</item>
+        <item name="android:statusBarColor">@color/bg_panel</item>
+        <item name="android:navigationBarColor">@color/bg_panel</item>
+        <item name="bottomNavigationStyle">@style/BottomNav.EliteCast</item>
+    </style>
+
+    <!-- Splash sans ActionBar -->
+    <style name="Theme.EliteCast.Splash" parent="Theme.EliteCast">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowBackground">@color/bg_deep</item>
+    </style>
+
+    <!-- Fullscreen pour l'écran d'affichage TV -->
+    <style name="Theme.EliteCast.Fullscreen" parent="Theme.EliteCast">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+
+    <!-- ══════════════════════════════════════════
+         THÈME 2 : SOMBRE (Noir/Violet)
+    ══════════════════════════════════════════ -->
+    <style name="Theme.EliteCast.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/dark_accent</item>
+        <item name="colorPrimaryVariant">@color/dark_accent2</item>
+        <item name="colorOnPrimary">@color/text_white</item>
+        <item name="colorSecondary">@color/dark_accent2</item>
+        <item name="colorSurface">@color/dark_bg_panel</item>
+        <item name="colorOnSurface">@color/text_white</item>
+        <item name="android:windowBackground">@color/dark_bg_deep</item>
+        <item name="android:statusBarColor">@color/dark_bg_panel</item>
+        <item name="android:navigationBarColor">@color/dark_bg_panel</item>
+        <item name="bottomNavigationStyle">@style/BottomNav.EliteCast.Dark</item>
+    </style>
+
+    <!-- ══════════════════════════════════════════
+         THÈME 3 : BLEU / ROUGE
+    ══════════════════════════════════════════ -->
+    <style name="Theme.EliteCast.BlueRed" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/br_accent</item>
+        <item name="colorPrimaryVariant">@color/br_red</item>
+        <item name="colorOnPrimary">@color/text_white</item>
+        <item name="colorSecondary">@color/br_red</item>
+        <item name="colorSurface">@color/br_panel</item>
+        <item name="colorOnSurface">@color/text_white</item>
+        <item name="android:windowBackground">@color/br_bg</item>
+        <item name="android:statusBarColor">@color/br_panel</item>
+        <item name="android:navigationBarColor">@color/br_panel</item>
+        <item name="bottomNavigationStyle">@style/BottomNav.EliteCast.BlueRed</item>
+    </style>
+
+    <!-- ══════════════════════════════════════════
+         BOTTOM NAVIGATION STYLES
+    ══════════════════════════════════════════ -->
+    <style name="BottomNav.EliteCast" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/nav_item_color</item>
+        <item name="itemTextColor">@color/nav_item_color</item>
+        <item name="android:background">@color/bg_panel</item>
+        <item name="itemRippleColor">@color/accent_mid</item>
+    </style>
+
+    <style name="BottomNav.EliteCast.Dark" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/nav_item_color</item>
+        <item name="itemTextColor">@color/nav_item_color</item>
+        <item name="android:background">@color/dark_bg_panel</item>
+    </style>
+
+    <style name="BottomNav.EliteCast.BlueRed" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/nav_item_color</item>
+        <item name="itemTextColor">@color/nav_item_color</item>
+        <item name="android:background">@color/br_panel</item>
+    </style>
+
+    <!-- ══════════════════════════════════════════
+         TEXTE
+    ══════════════════════════════════════════ -->
+    <style name="TextAppearance.EliteCast.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:fontFamily">@font/rajdhani_bold</item>
+        <item name="android:letterSpacing">0.08</item>
+    </style>
+
+    <style name="TextAppearance.EliteCast.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/text_dim</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+</resources>
