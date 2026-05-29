@@ -29,11 +29,11 @@
                 android:src="@drawable/ic_broadcast" android:tint="@color/accent_blue"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="ELITE" android:textColor="@color/text_white" android:textSize="15sp"
-                android:textStyle="bold" android:fontFamily="@font/rajdhani_bold"
+                android:textStyle="bold" android:fontFamily="@font/sans-serif"
                 android:letterSpacing="0.1" android:layout_marginStart="6dp"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="CAST" android:textColor="@color/accent_red" android:textSize="15sp"
-                android:textStyle="bold" android:fontFamily="@font/rajdhani_bold"
+                android:textStyle="bold" android:fontFamily="@font/sans-serif"
                 android:letterSpacing="0.1"/>
         </LinearLayout>
 
@@ -238,7 +238,7 @@
             <!-- APERÇU LIVE -->
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="🔴 APERÇU LIVE" android:textColor="@color/text_dim"
-                android:textSize="9sp" android:fontFamily="@font/rajdhani_bold"
+                android:textSize="9sp" android:fontFamily="@font/sans-serif"
                 android:letterSpacing="0.2" android:paddingStart="12dp" android:paddingTop="8dp"/>
 
             <FrameLayout android:id="@+id/preview_frame"
