@@ -41,7 +41,19 @@ jobs:
 
       - name: 🧹 Clean
         run: ./gradlew clean --no-daemon
-
+        
+        - name: Create Placeholder Launch Icons for AAPT2
+        run: |
+          # Création du dossier mipmap de base s'il n'existe pas
+          MIPMAP_DIR="app/src/main/res/mipmap-mdpi"
+          mkdir -p $MIPMAP_DIR
+          
+          # Téléchargement d'une icône Android par défaut pour combler le vide
+          curl -L -o "$MIPMAP_DIR/ic_launcher.png" "https://github.com/android/user-interface-samples/raw/main/UserInterface/ActionBarCompat-Styled/src/main/res/mipmap-mdpi/ic_launcher.png"
+          cp "$MIPMAP_DIR/ic_launcher.png" "$MIPMAP_DIR/ic_launcher_round.png"
+          
+          echo "Icônes temporaires injectées avec succès."
+        
       - name: 🔨 Build Debug APK (arm64 + armv7 + x86_64)
         run: ./gradlew assembleDebug --no-daemon --stacktrace
 
