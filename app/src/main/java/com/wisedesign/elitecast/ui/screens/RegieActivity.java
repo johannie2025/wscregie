@@ -26,7 +26,7 @@ import com.wisedesign.elitecast.R;
 import com.wisedesign.elitecast.license.LicenseManager;
 import com.wisedesign.elitecast.network.UdpAnnounce;
 import com.wisedesign.elitecast.service.RegieService;
-//import com.wisedesign.elitecast.ui.screens.ScreenConfigSheet;
+import com.wisedesign.elitecast.ui.screens.ScreenConfigSheet;
 import com.wisedesign.elitecast.ui.settings.AdminActivity;
 import com.wisedesign.elitecast.ui.settings.SettingsActivity;
 
