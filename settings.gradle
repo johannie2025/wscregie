@@ -1,2 +1,20 @@
-rootProject.name = "EliteCastRegie"
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' } // Pour rtmp-rtsp-stream-client
+        maven { url 'https://artifactory.appodeal.com/appodeal-public/' } // Miroir de secours pour ffmpeg-kit
+    }
+}
+
 include ':app'
+rootProject.name = "WiseSmartChurchSystem"
