@@ -42,13 +42,6 @@ android {
         resources.excludes.add("META-INF/*.kotlin_module")
         resources.excludes.add("META-INF/DEPENDENCIES")
     }
-
-    // Configuration requise pour lire le fichier AAR téléchargé localement
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
 }
 
 dependencies {
