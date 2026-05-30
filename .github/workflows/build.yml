@@ -24,9 +24,6 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
 
-      - name: 🔐 Setup Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: 📦 Cache Gradle
         uses: actions/cache@v4
         with:
@@ -39,53 +36,27 @@ jobs:
       - name: 🔑 Permissions gradlew
         run: chmod +x gradlew
 
-      - name: 🧹 Clean
-        run: ./gradlew clean --no-daemon
-        
-      - name: Create Placeholder Launch Icons for AAPT2
+      - name: 🎨 Injection Icônes
         run: |
-          # Création du dossier mipmap de base s'il n'existe pas
           MIPMAP_DIR="app/src/main/res/mipmap-mdpi"
           mkdir -p $MIPMAP_DIR
-          
-          # Téléchargement d'une icône Android par défaut pour combler le vide
           curl -L -o "$MIPMAP_DIR/ic_launcher.png" "https://github.com/android/user-interface-samples/raw/main/UserInterface/ActionBarCompat-Styled/src/main/res/mipmap-mdpi/ic_launcher.png"
           cp "$MIPMAP_DIR/ic_launcher.png" "$MIPMAP_DIR/ic_launcher_round.png"
-          
-          echo "Icônes temporaires injectées avec succès."
-        
-      - name: 🧹 Clean & Build
+
+      - name: 🏗️ Build Debug APKs
         run: |
           mkdir -p app/libs
-          rm -f app/libs/*.aar
           ./gradlew assembleDebug --no-daemon --stacktrace
-        
-      - name: 🔨 Build Debug APK (arm64 + armv7 + x86_64)
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
 
-      - name: 📤 Upload APK arm64-v8a
+      - name: 📤 Upload All Debug APKs
         uses: actions/upload-artifact@v4
         with:
-          name: EliteCastRegie-debug-arm64
-          path: app/build/outputs/apk/debug/*arm64*.apk
-          retention-days: 14
-
-      - name: 📤 Upload APK armeabi-v7a
-        uses: actions/upload-artifact@v4
-        with:
-          name: EliteCastRegie-debug-armv7
-          path: app/build/outputs/apk/debug/*armeabi*.apk
-          retention-days: 14
-
-      - name: 📤 Upload APK universal
-        uses: actions/upload-artifact@v4
-        with:
-          name: EliteCastRegie-debug-universal
-          path: app/build/outputs/apk/debug/*universal*.apk
+          name: EliteCastRegie-debug-apks
+          path: app/build/outputs/apk/debug/*.apk
           retention-days: 14
 
   release:
-    name: 🚀 Release APK (tag v*.*.*)
+    name: 🚀 Release APK
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
     needs: build
@@ -97,30 +68,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'gradle'
-
-      - uses: android-actions/setup-android@v3
-
-      - name: 📦 Cache Gradle
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: gradle-${{ hashFiles('**/*.gradle*') }}
-
-      - run: chmod +x gradlew
 
       - name: 🔑 Decode Keystore
         run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > keystore.jks
-        env:
-          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
 
       - name: 📦 Build Release APK
         run: ./gradlew assembleRelease --no-daemon
         env:
-          ANDROID_SDK_ROOT: ${{ env.ANDROID_HOME }}
-          KEYSTORE_PATH: ${{ github.workspace }}/keystore.jks
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
@@ -130,32 +84,6 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           name: "EliteCast Régie ${{ github.ref_name }}"
-          body: |
-            ## 📺 EliteCast Régie ${{ github.ref_name }}
-            **APK Régie Java Natif – Phone & Tablette**
-
-            ### 📦 Fichiers APK
-            | Fichier | Cible |
-            |---------|-------|
-            | `*-arm64-v8a-release.apk` | Téléphones/tablettes récents (64-bit) |
-            | `*-armeabi-v7a-release.apk` | Appareils 32-bit |
-            | `*-universal-release.apk` | Tous appareils |
-
-            ### ✅ Fonctionnalités
-            - 🔌 WebSocket Java pur (port 9000) – compatible TV Box receiver
-            - 📡 Auto-découverte UDP (port 9002) – zéro configuration
-            - 🔑 Système de licences 90/180/365 jours
-            - 👑 Admin panel (génération de licences)
-            - 🌍 Trilingue FR/EN/ES
-            - 🎨 3 thèmes (Bleu/Blanc, Sombre, Bleu/Rouge)
-            - 📖 Bible multiversion (LSG, NBS, RVR60, KJV)
-            - 🎵 Chants & Médias RTSP/RTMP
-            - ❌ Sans PeerJS, Sans MQTT
-
-            ---
-            **Wise Design** · Prophète Josias
-            📞 WhatsApp : +240 555 445 514
-            🌍 Bata, Guinée Équatoriale
           files: app/build/outputs/apk/release/*.apk
           draft: false
         env:
