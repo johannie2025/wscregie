@@ -114,7 +114,7 @@ public class WscWebSocketServer extends NanoWSD {
         }
 
         @Override
-        protected void onClose(CloseCode code, String reason, boolean init) {
+        protected void onClose(int code, String reason, boolean init) {
             clients.remove(clientId);
             Log.i(TAG, "Client déconnecté: " + clientId);
             if (callback != null) callback.onClientDisconnected(clientId);

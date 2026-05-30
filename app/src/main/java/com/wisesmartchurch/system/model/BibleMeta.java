@@ -1,4 +1,5 @@
 package com.wisesmartchurch.system.model;
+import androidx.annotation.NonNull;
 import androidx.room.*;
 @Entity(tableName="bible_meta")
 public class BibleMeta {

@@ -1,4 +1,5 @@
 package com.wisesmartchurch.system.model;
+import androidx.annotation.NonNull;
 import androidx.room.*;
 @Entity(tableName="screen_devices")
 public class ScreenDevice {
