@@ -88,3 +88,23 @@ dependencies {
     implementation(name: 'ffmpeg-kit-full-gpl-5.1.LTS', ext: 'aar')
     implementation 'com.arthenica:smart-exception-java:0.2.1'
 }
+
+afterEvaluate {
+    def aarFile = file("${rootDir}/app/libs/ffmpeg-kit-full-gpl-5.1.LTS.aar")
+
+    tasks.register("downloadFfmpegAar") {
+        outputs.file(aarFile)
+        doLast {
+            if (!aarFile.exists()) {
+                aarFile.parentFile.mkdirs()
+                new URL('https://artifactory.appodeal.com/appodeal-public/com/arthenica/ffmpeg-kit-full-gpl/5.1.LTS/ffmpeg-kit-full-gpl-5.1.LTS.aar')
+                    .withInputStream { is -> aarFile.withOutputStream { it << is } }
+            }
+        }
+    }
+
+    // C'est cette ligne qui corrige le problème de "Could not resolve"
+    tasks.named("preBuild").configure {
+        dependsOn "downloadFfmpegAar"
+    }
+}

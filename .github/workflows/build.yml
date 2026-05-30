@@ -54,6 +54,12 @@ jobs:
           
           echo "Icônes temporaires injectées avec succès."
         
+      - name: 🧹 Clean & Build
+        run: |
+          mkdir -p app/libs
+          rm -f app/libs/*.aar
+          ./gradlew assembleDebug --no-daemon --stacktrace
+        
       - name: 🔨 Build Debug APK (arm64 + armv7 + x86_64)
         run: ./gradlew assembleDebug --no-daemon --stacktrace
 
