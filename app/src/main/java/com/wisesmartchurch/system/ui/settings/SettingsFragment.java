@@ -112,7 +112,7 @@ public class SettingsFragment {
     private EditText addInput(String hint, String value) {
         EditText et = new EditText(ctx);
         et.setHint(hint); et.setText(value);
-        et.setTextColor(0xFFE2E8F0); et.setTextColorHint(0xFF64748B);
+        et.setTextColor(0xFFE2E8F0); et.setHintTextColor(0xFF64748B);
         et.setTextSize(12f); et.setBackgroundResource(R.drawable.bg_search);
         et.setPadding(10, 8, 10, 8);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
