@@ -114,11 +114,7 @@ public class WscWebSocketServer extends NanoWSD {
         }
 
 		@Override
-		protected void onClose(NanoWSD.WebSocket.CloseCode code, String reason, boolean init) {
-			clients.remove(clientId);
-			Log.i(TAG, "Client déconnecté: " + clientId);
-			if (callback != null) callback.onClientDisconnected(clientId);
-		}
+		protected void onClose(NanoWSD.WebSocketFrame.CloseCode code, String reason, boolean init) {
 
         @Override protected void onPong(WebSocketFrame f) {}
         @Override protected void onException(IOException e) {
