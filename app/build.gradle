@@ -44,6 +44,28 @@ android {
     }
 }
 
+import java.net.URL
+
+afterEvaluate {
+    def aarUrl = 'https://YOUR_BACKUP_SERVER_OR_MIRROR/ffmpeg-kit-full-gpl-5.1.LTS.aar'
+    def aarFile = file("${rootDir}/app/libs/ffmpeg-kit-full-gpl-5.1.LTS.aar")
+
+    tasks.register("downloadFfmpegAar") {
+        doLast {
+            if (!aarFile.parentFile.exists()) {
+                aarFile.parentFile.mkdirs()
+            }
+            if (!aarFile.exists()) {
+                println "⏬ Downloading FFmpeg-Kit AAR from backup mirror..."
+                new URL(aarUrl).withInputStream { i -> aarFile.withOutputStream { it << i } }
+                println "✅ AAR downloaded successfully."
+            }
+        }
+    }
+    // Force preBuild to wait for the download step
+    preBuild.dependsOn("downloadFfmpegAar")
+}
+
 dependencies {
     // Core
     implementation 'androidx.appcompat:appcompat:1.7.0'
