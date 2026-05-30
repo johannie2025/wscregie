@@ -5,12 +5,6 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.2.2'
-        classpath 'com.google.gms:google-services:4.4.0'
     }
 }
-
-// La gestion des dépôts (allprojects) est maintenant déportée dans settings.gradle
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+task clean(type: Delete) { delete rootProject.buildDir }

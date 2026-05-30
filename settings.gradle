@@ -5,16 +5,13 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' } // Pour rtmp-rtsp-stream-client
-        maven { url 'https://artifactory.appodeal.com/appodeal-public/' } // Miroir de secours pour ffmpeg-kit
+        maven { url 'https://jitpack.io' }
     }
 }
-
-include ':app'
 rootProject.name = "WiseSmartChurchSystem"
+include ':app'

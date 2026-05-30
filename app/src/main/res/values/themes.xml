@@ -10,8 +10,8 @@
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:statusBarColor">@color/bg_dark</item>
         <item name="android:navigationBarColor">@color/bg_dark</item>
-        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
+
     <style name="BtnProject" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/gold</item>
         <item name="android:textColor">@color/wsc_black</item>
@@ -19,12 +19,14 @@
         <item name="android:textStyle">bold</item>
         <item name="cornerRadius">10dp</item>
     </style>
+
     <style name="BtnDanger" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="strokeColor">@color/danger</item>
         <item name="android:textColor">@color/danger</item>
         <item name="android:textSize">11sp</item>
         <item name="cornerRadius">7dp</item>
     </style>
+
     <style name="BtnIcon" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:textColor">@color/text_muted</item>
         <item name="android:textSize">11sp</item>
@@ -34,6 +36,7 @@
         <item name="android:paddingTop">6dp</item>
         <item name="android:paddingBottom">6dp</item>
     </style>
+
     <style name="SectionTitle">
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/text_muted</item>
@@ -41,6 +44,7 @@
         <item name="android:letterSpacing">0.1</item>
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="RemoteVerse">
         <item name="android:textSize">36sp</item>
         <item name="android:textColor">@color/wsc_white</item>
