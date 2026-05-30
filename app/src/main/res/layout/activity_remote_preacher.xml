@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#000000" android:orientation="vertical">
+    <!-- Top connection bar -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:padding="8dp" android:background="#0F1219">
+        <EditText android:id="@+id/et_remote_ip"
+            android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+            android:hint="IP de la régie (ex: 192.168.1.10)"
+            android:textSize="12sp" android:textColor="#E2E8F0" android:textColorHint="#64748B"
+            android:background="#1E2535" android:paddingStart="8dp" android:inputType="phone"/>
+        <Button android:id="@+id/btn_remote_connect"
+            android:layout_width="wrap_content" android:layout_height="36dp"
+            android:text="Connecter" android:textSize="11sp"
+            android:background="#2563EB" android:textColor="#FFFFFF"
+            android:layout_marginStart="6dp" android:paddingStart="12dp" android:paddingEnd="12dp"/>
+        <TextView android:id="@+id/tv_remote_conn"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="○ Déconnecté" android:textSize="10sp" android:textColor="#EF4444"
+            android:layout_marginStart="8dp" android:gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:padding="6dp" android:background="#080A0F">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="🎤 Remote Prédicateur — Wise Smart Church System"
+            android:textSize="10sp" android:textColor="#64748B" android:gravity="center"/>
+    </LinearLayout>
+    <!-- Verse display -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:orientation="vertical"
+        android:gravity="center" android:padding="24dp">
+        <TextView android:id="@+id/tv_remote_verse"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="34sp" android:textColor="#FFFFFF" android:textStyle="bold"
+            android:gravity="center" android:lineSpacingMultiplier="1.4"
+            android:shadowColor="#CC000000" android:shadowDx="0" android:shadowDy="2" android:shadowRadius="8"
+            android:layout_marginBottom="20dp"/>
+        <TextView android:id="@+id/tv_remote_ref"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="18sp" android:textColor="#F0C040" android:gravity="center"
+            android:letterSpacing="0.06" android:visibility="gone"/>
+    </LinearLayout>
+    <TextView android:id="@+id/tv_remote_status"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:padding="6dp" android:textSize="10sp" android:textColor="#64748B"
+        android:gravity="center" android:text="En attente de projection…"/>
+</LinearLayout>

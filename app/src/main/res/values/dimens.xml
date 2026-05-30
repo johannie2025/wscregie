@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sidebar_width">185dp</dimen>
+    <dimen name="right_panel_width">255dp</dimen>
+    <dimen name="topbar_height">46dp</dimen>
+    <dimen name="tab_height">40dp</dimen>
+    <dimen name="btn_height">38dp</dimen>
+    <dimen name="card_radius">8dp</dimen>
+    <dimen name="sp_xs">4dp</dimen>
+    <dimen name="sp_sm">8dp</dimen>
+    <dimen name="sp_md">12dp</dimen>
+    <dimen name="sp_lg">16dp</dimen>
+    <dimen name="text_xs">10sp</dimen>
+    <dimen name="text_sm">11sp</dimen>
+    <dimen name="text_md">13sp</dimen>
+    <dimen name="text_lg">15sp</dimen>
+</resources>

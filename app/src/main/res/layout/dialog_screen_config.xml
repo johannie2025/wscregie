@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="16dp" android:background="#0F1219">
+    <EditText android:id="@+id/et_screen_name"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="Nom de l'écran (ex: TV Principale)" android:textColor="#E2E8F0"
+        android:textColorHint="#64748B" android:background="#1E2535" android:padding="10dp"
+        android:layout_marginBottom="8dp"/>
+    <Spinner android:id="@+id/sp_screen_role"
+        android:layout_width="match_parent" android:layout_height="40dp"
+        android:entries="@array/screen_roles" android:background="#1E2535" android:layout_marginBottom="8dp"/>
+    <Spinner android:id="@+id/sp_screen_layout"
+        android:layout_width="match_parent" android:layout_height="40dp"
+        android:entries="@array/screen_layouts" android:background="#1E2535" android:layout_marginBottom="12dp"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="ÉLÉMENTS AFFICHÉS" android:textSize="10sp" android:textColor="#64748B"
+        android:textAllCaps="true" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
+    <CheckBox android:id="@+id/cb_screen_verse"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Versets bibliques / Lyrics" android:textColor="#E2E8F0" android:checked="true"/>
+    <CheckBox android:id="@+id/cb_screen_lt"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Lower Thirds (noms / rôles)" android:textColor="#E2E8F0" android:checked="true"/>
+    <CheckBox android:id="@+id/cb_screen_clock"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Horloge en temps réel" android:textColor="#E2E8F0"/>
+    <CheckBox android:id="@+id/cb_screen_plan"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Plan de prédication / Notes" android:textColor="#E2E8F0"/>
+</LinearLayout>

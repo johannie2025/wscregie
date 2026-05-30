@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.WiseSmartChurch" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/gold</item>
+        <item name="colorPrimaryVariant">@color/blue_deep</item>
+        <item name="colorOnPrimary">@color/wsc_black</item>
+        <item name="colorSurface">@color/bg_dark2</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:statusBarColor">@color/bg_dark</item>
+        <item name="android:navigationBarColor">@color/bg_dark</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+    <style name="BtnProject" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/gold</item>
+        <item name="android:textColor">@color/wsc_black</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">10dp</item>
+    </style>
+    <style name="BtnDanger" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/danger</item>
+        <item name="android:textColor">@color/danger</item>
+        <item name="android:textSize">11sp</item>
+        <item name="cornerRadius">7dp</item>
+    </style>
+    <style name="BtnIcon" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/text_muted</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:background">@drawable/bg_btn_icon</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+    </style>
+    <style name="SectionTitle">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_muted</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="RemoteVerse">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/wsc_white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+        <item name="android:shadowColor">#CC000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">3</item>
+        <item name="android:shadowRadius">10</item>
+    </style>
+</resources>

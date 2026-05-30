@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="horizontal" android:padding="10dp" android:gravity="center_vertical"
+    android:background="@drawable/bg_card" android:layout_marginBottom="4dp"
+    android:layout_marginStart="4dp" android:layout_marginEnd="4dp">
+    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_weight="1" android:orientation="vertical">
+        <TextView android:id="@+id/tv_screen_name"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="13sp" android:textColor="#E2E8F0" android:textStyle="bold"/>
+        <TextView android:id="@+id/tv_screen_ip"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="10sp" android:textColor="#64748B" android:fontFamily="monospace"/>
+    </LinearLayout>
+    <TextView android:id="@+id/tv_screen_status"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="○" android:textSize="11sp" android:textColor="#EF4444"
+        android:layout_marginEnd="8dp"/>
+    <Button android:id="@+id/btn_screen_config"
+        android:layout_width="wrap_content" android:layout_height="28dp"
+        android:text="⚙ Config" android:textSize="10sp"
+        android:background="@drawable/bg_btn_icon" android:textColor="#64748B"
+        android:paddingStart="8dp" android:paddingEnd="8dp"/>
+</LinearLayout>

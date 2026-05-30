@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="16dp" android:background="#0F1219">
+    <EditText android:id="@+id/et_ann_title"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="Titre de l'annonce *" android:textColor="#E2E8F0" android:textColorHint="#64748B"
+        android:background="#1E2535" android:padding="10dp" android:layout_marginBottom="8dp"/>
+    <EditText android:id="@+id/et_ann_subtitle"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="Sous-titre (optionnel)" android:textColor="#E2E8F0" android:textColorHint="#64748B"
+        android:background="#1E2535" android:padding="10dp" android:layout_marginBottom="8dp"/>
+    <EditText android:id="@+id/et_ann_body"
+        android:layout_width="match_parent" android:layout_height="100dp"
+        android:hint="Texte de l'annonce…" android:textColor="#E2E8F0" android:textColorHint="#64748B"
+        android:background="#1E2535" android:padding="10dp"
+        android:gravity="top" android:inputType="textMultiLine" android:layout_marginBottom="8dp"/>
+    <Spinner android:id="@+id/sp_ann_category"
+        android:layout_width="match_parent" android:layout_height="40dp"
+        android:entries="@array/ann_categories" android:background="#1E2535"
+        android:layout_marginBottom="8dp"/>
+    <EditText android:id="@+id/et_ann_bg"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="URL image de fond (optionnel)" android:textColor="#E2E8F0" android:textColorHint="#64748B"
+        android:background="#1E2535" android:padding="10dp"/>
+</LinearLayout>

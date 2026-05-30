@@ -1,57 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">EliteCast Régie</string>
-    <string name="app_tagline">Wise Design · Prophète Josias</string>
-
-    <!-- Auth -->
-    <string name="btn_trial">Essai gratuit</string>
-    <string name="btn_login">Se connecter</string>
-    <string name="hint_login">Identifiant</string>
-    <string name="hint_password">Mot de passe (admin)</string>
-    <string name="hint_license">Clé de licence (ECPRO-…)</string>
-    <string name="err_invalid_license">Clé de licence invalide ou expirée</string>
-    <string name="err_wrong_password">Mot de passe incorrect</string>
-    <string name="btn_submit">Connexion</string>
-    <string name="btn_back">← Retour</string>
-
-    <!-- Régie -->
-    <string name="btn_broadcast">📡 DIFFUSER</string>
-    <string name="btn_clear">Effacer</string>
-    <string name="btn_blackout">⬛ Noir</string>
-    <string name="btn_prev">◀ Préc.</string>
-    <string name="btn_next">Suiv. ▶</string>
-    <string name="nav_bible">Bible</string>
-    <string name="nav_songs">Chants</string>
-    <string name="nav_media">Médias</string>
-    <string name="nav_screens">Écrans</string>
-    <string name="search_verse_hint">Rechercher un verset…</string>
-    <string name="lt_title_hint">Banc-titre…</string>
-    <string name="lt_sub_hint">Sous-titre…</string>
-    <string name="btn_show_lt">▶ Afficher</string>
-    <string name="screens_connected">écran(s) connecté(s)</string>
-    <string name="target_all">Tous</string>
-    <string name="transition_fade">Fondu</string>
-    <string name="transition_slide">Glisse</string>
-    <string name="transition_cut">Coupé</string>
-
-    <!-- Admin -->
-    <string name="admin_title">Panneau Administrateur</string>
-    <string name="btn_generate">⚡ Générer les licences</string>
-    <string name="btn_copy_all">📋 Tout copier</string>
-    <string name="days_90">90 jours</string>
-    <string name="days_180">180 jours</string>
-    <string name="days_365">1 an (365 jours)</string>
-
-    <!-- Paramètres -->
-    <string name="settings_title">Paramètres</string>
-    <string name="theme_blue">☀️ Bleu/Blanc</string>
-    <string name="theme_dark">🌙 Sombre</string>
-    <string name="theme_red">🔴 Bleu/Rouge</string>
-    <string name="btn_logout">Déconnexion</string>
-    <string name="btn_whatsapp">📱 WhatsApp Support</string>
-    <string name="support_info">Prophète Josias · Wise Design\n+240 555 445 514\nBata, Guinée Équatoriale</string>
-
-    <!-- Trial -->
-    <string name="trial_watermark">ELITECAST TRIAL</string>
-    <string name="trial_limit">Version d\'essai · Max 3 écrans</string>
+    <string name="app_name">Wise Smart Church System</string>
+    <string name="projeter">PROJETER</string>
+    <string name="ecran_noir">Écran noir</string>
+    <string name="no_bible">Aucune bible. Allez dans Bibles ▸ Télécharger.</string>
+    <string name="tab_bible">📖 Bible</string>
+    <string name="tab_songs">🎵 Chants</string>
+    <string name="tab_announce">📢 Annonces</string>
+    <string name="tab_playlist">🎬 Culte</string>
+    <string name="tab_bibles">📥 Bibles</string>
+    <string name="tab_settings">⚙ Config</string>
+    <string name="tab_screens">📺 Écrans</string>
+    <string-array name="lt_types">
+        <item>Prédication</item><item>Adoration</item><item>Chant Spécial</item>
+        <item>Exhortation</item><item>Annonce</item><item>Témoignage</item>
+    </string-array>
+    <string-array name="lt_styles">
+        <item>Standard</item><item>Cinéma Pro</item><item>Minimal</item><item>Gradient Gold</item>
+    </string-array>
+    <string-array name="service_types">
+        <item>culte</item><item>prédication</item><item>adoration</item><item>chant spécial</item>
+        <item>exhortation</item><item>funérailles</item><item>mariage</item><item>conférence</item>
+    </string-array>
+    <string-array name="screen_roles">
+        <item>main</item><item>chorale</item><item>retour</item><item>podium</item><item>foyer</item>
+    </string-array>
+    <string-array name="screen_layouts">
+        <item>Verset seulement</item><item>Verset + Lower Third</item>
+        <item>Lower Third seulement</item><item>Caméra</item>
+        <item>Horloge + Plan</item><item>Complet</item>
+    </string-array>
+    <string-array name="languages">
+        <item>fr</item><item>es</item><item>en</item>
+    </string-array>
+    <string-array name="ann_categories">
+        <item>annonce</item><item>événement</item><item>info</item><item>urgent</item><item>prière</item>
+    </string-array>
+    <string-array name="bg_modes">
+        <item>Noir uni</item><item>Dégradé</item><item>Image URL</item><item>Couleur</item>
+    </string-array>
+    <string-array name="font_sizes">
+        <item>Petit (3.8vw)</item><item>Moyen (5.5vw)</item><item>Grand (7vw)</item><item>XL (9vw)</item>
+    </string-array>
+    <string-array name="text_colors">
+        <item>#FFFFFF</item><item>#FDE68A</item><item>#BBF7D0</item><item>#BFDBFE</item><item>#FCA5A5</item>
+    </string-array>
 </resources>

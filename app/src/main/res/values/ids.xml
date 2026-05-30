@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="dl_progress_bar" type="id"/>
+    <item name="tv_dl_status"    type="id"/>
+    <item name="ll_bibles_content" type="id"/>
+    <item name="ll_settings_content" type="id"/>
+</resources>

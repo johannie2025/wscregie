@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/bg_dark">
+
+    <!-- ══ TOP BAR ══ -->
+    <LinearLayout android:id="@+id/topbar"
+        android:layout_width="match_parent" android:layout_height="@dimen/topbar_height"
+        android:background="@color/bg_dark2" android:orientation="horizontal"
+        android:gravity="center_vertical" android:paddingStart="12dp" android:paddingEnd="12dp"
+        android:paddingTop="4dp" android:paddingBottom="4dp">
+
+        <TextView android:id="@+id/tv_app_name"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Wise Smart\nChurch System" android:textSize="11sp"
+            android:textColor="@color/gold" android:textStyle="bold"
+            android:letterSpacing="0.04" android:layout_marginEnd="12dp"/>
+
+        <!-- Server Status -->
+        <TextView android:id="@+id/tv_server_status"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="○ En attente" android:textSize="10sp" android:textColor="@color/warning"
+            android:layout_marginEnd="8dp"/>
+
+        <View android:layout_width="1dp" android:layout_height="16dp" android:background="@color/bg_dark4" android:layout_marginEnd="8dp"/>
+
+        <TextView android:id="@+id/tv_server_ip"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="—:9000" android:textSize="10sp" android:textColor="@color/text_muted"
+            android:fontFamily="monospace" android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_btn_icon" android:paddingStart="6dp"
+            android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp"/>
+
+        <TextView android:id="@+id/tv_screen_count"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="0 écran(s)" android:textSize="10sp" android:textColor="@color/text_muted"
+            android:layout_marginEnd="12dp"/>
+
+        <!-- Overlay Slots 1-4 (like vMix) -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="SLOT:" android:textSize="9sp" android:textColor="@color/text_muted"
+            android:layout_marginEnd="4dp"/>
+
+        <Button android:id="@+id/btn_slot1"
+            android:layout_width="32dp" android:layout_height="26dp"
+            android:text="1" android:textSize="10sp" android:textColor="@color/wsc_white"
+            android:background="@drawable/bg_slot_active" android:padding="0dp" android:layout_marginEnd="3dp"/>
+        <Button android:id="@+id/btn_slot2"
+            android:layout_width="32dp" android:layout_height="26dp"
+            android:text="2" android:textSize="10sp" android:textColor="@color/text_muted"
+            android:background="@drawable/bg_slot_btn" android:padding="0dp" android:layout_marginEnd="3dp" android:alpha="0.45"/>
+        <Button android:id="@+id/btn_slot3"
+            android:layout_width="32dp" android:layout_height="26dp"
+            android:text="3" android:textSize="10sp" android:textColor="@color/text_muted"
+            android:background="@drawable/bg_slot_btn" android:padding="0dp" android:layout_marginEnd="3dp" android:alpha="0.45"/>
+        <Button android:id="@+id/btn_slot4"
+            android:layout_width="32dp" android:layout_height="26dp"
+            android:text="4" android:textSize="10sp" android:textColor="@color/text_muted"
+            android:background="@drawable/bg_slot_btn" android:padding="0dp" android:layout_marginEnd="12dp" android:alpha="0.45"/>
+
+        <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+
+        <!-- Remote modes -->
+        <Button android:id="@+id/btn_remote_preacher"
+            android:layout_width="wrap_content" android:layout_height="28dp"
+            android:text="🎤 Préd." android:textSize="10sp" android:padding="0dp"
+            android:paddingStart="8dp" android:paddingEnd="8dp"
+            android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"
+            android:layout_marginEnd="4dp"/>
+        <Button android:id="@+id/btn_remote_maestro"
+            android:layout_width="wrap_content" android:layout_height="28dp"
+            android:text="🎵 Maestro" android:textSize="10sp" android:padding="0dp"
+            android:paddingStart="8dp" android:paddingEnd="8dp"
+            android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"
+            android:layout_marginEnd="4dp"/>
+
+        <Button android:id="@+id/btn_screens"
+            android:layout_width="wrap_content" android:layout_height="28dp"
+            android:text="📺 Écrans" android:textSize="10sp" android:padding="0dp"
+            android:paddingStart="8dp" android:paddingEnd="8dp"
+            android:background="@drawable/bg_btn_icon" android:textColor="@color/gold"
+            android:layout_marginEnd="0dp"/>
+    </LinearLayout>
+
+    <!-- ══ MAIN 3-COLUMN AREA ══ -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:orientation="horizontal">
+
+        <!-- ══ LEFT: Bible Navigator ══ -->
+        <LinearLayout android:layout_width="@dimen/sidebar_width" android:layout_height="match_parent"
+            android:background="@color/bg_dark2" android:orientation="vertical">
+
+            <!-- AT / NT Toggle -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:background="@color/bg_dark2">
+                <Button android:id="@+id/btn_at"
+                    android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1"
+                    android:text="AT" android:textSize="10sp" android:textColor="@color/gold"
+                    android:background="@drawable/bg_btn_icon" android:textStyle="bold"/>
+                <Button android:id="@+id/btn_nt"
+                    android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1"
+                    android:text="NT" android:textSize="10sp" android:textColor="@color/text_muted"
+                    android:background="@drawable/bg_btn_icon"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg_dark4"/>
+
+            <!-- Books list -->
+            <ScrollView android:id="@+id/sv_books"
+                android:layout_width="match_parent" android:layout_height="0dp"
+                android:layout_weight="1" android:scrollbars="none">
+                <LinearLayout android:id="@+id/ll_books"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="4dp"/>
+            </ScrollView>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg_dark4"/>
+
+            <!-- Chapter grid -->
+            <TextView android:id="@+id/tv_book_name"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="—" android:textSize="10sp" android:textColor="@color/text_muted"
+                android:padding="6dp" android:gravity="center"/>
+
+            <GridView android:id="@+id/gv_chapters"
+                android:layout_width="match_parent" android:layout_height="100dp"
+                android:numColumns="5" android:horizontalSpacing="2dp"
+                android:verticalSpacing="2dp" android:padding="4dp"
+                android:stretchMode="columnWidth"/>
+
+            <!-- Bible version selector -->
+            <Spinner android:id="@+id/sp_bible_version"
+                android:layout_width="match_parent" android:layout_height="30dp"
+                android:background="@drawable/bg_btn_icon"
+                android:padding="4dp"/>
+        </LinearLayout>
+
+        <View android:layout_width="1dp" android:layout_height="match_parent" android:background="@color/bg_dark4"/>
+
+        <!-- ══ CENTER: Content Panels ══ -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical">
+
+            <!-- Search bar -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:padding="8dp"
+                android:background="@color/bg_dark2" android:gravity="center_vertical">
+                <EditText android:id="@+id/et_bible_search"
+                    android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1"
+                    android:hint="🔍  Jean 3:16 · amour · grâce…"
+                    android:background="@drawable/bg_search" android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_muted" android:textSize="12sp"
+                    android:paddingStart="10dp" android:paddingEnd="10dp"
+                    android:imeOptions="actionSearch" android:singleLine="true"
+                    android:inputType="text"/>
+                <Button android:layout_width="wrap_content" android:layout_height="34dp"
+                    android:text="✕" android:textSize="11sp"
+                    android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"
+                    android:layout_marginStart="4dp" android:paddingStart="8dp" android:paddingEnd="8dp"
+                    android:onClick="clearSearch"/>
+                <!-- Active bible tags shown here via code -->
+                <ListView android:id="@+id/lv_search_results"
+                    android:layout_width="0dp" android:layout_height="0dp"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+            <!-- Tabs -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/center_tabs"
+                android:layout_width="match_parent" android:layout_height="@dimen/tab_height"
+                android:background="@color/bg_dark2"
+                app:tabSelectedTextColor="@color/gold"
+                app:tabUnselectedTextColor="@color/text_muted"
+                app:tabIndicatorColor="@color/gold"
+                app:tabIndicatorHeight="2dp"
+                app:tabTextAppearance="@style/SectionTitle"
+                app:tabMode="scrollable">
+                <com.google.android.material.tabs.TabItem android:text="@string/tab_bible"/>
+                <com.google.android.material.tabs.TabItem android:text="@string/tab_songs"/>
+                <com.google.android.material.tabs.TabItem android:text="@string/tab_announce"/>
+                <com.google.android.material.tabs.TabItem android:text="@string/tab_playlist"/>
+                <com.google.android.material.tabs.TabItem android:text="@string/tab_bibles"/>
+                <com.google.android.material.tabs.TabItem android:text="@string/tab_settings"/>
+                <com.google.android.material.tabs.TabItem android:text="@string/tab_screens"/>
+            </com.google.android.material.tabs.TabLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg_dark4"/>
+
+            <!-- Content panels container (each shown/hidden via code) -->
+            <FrameLayout android:id="@+id/center_content"
+                android:layout_width="match_parent" android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <!-- ── PANEL: Bible (verses) ── -->
+                <LinearLayout android:id="@+id/panel_bible"
+                    android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView android:id="@+id/tv_chapter_num"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Sélectionnez un livre" android:textSize="11sp"
+                        android:textColor="@color/text_muted" android:padding="6dp"/>
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg_dark4"/>
+                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_verses"
+                        android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:scrollbars="vertical" android:clipToPadding="false"
+                        android:paddingTop="4dp" android:paddingBottom="4dp"/>
+                </LinearLayout>
+
+                <!-- ── PANEL: Songs ── -->
+                <LinearLayout android:id="@+id/panel_songs"
+                    android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:orientation="vertical" android:visibility="gone">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:padding="6dp" android:gravity="center_vertical">
+                        <EditText android:id="@+id/et_song_search"
+                            android:layout_width="0dp" android:layout_height="30dp" android:layout_weight="1"
+                            android:hint="Rechercher un chant…" android:background="@drawable/bg_search"
+                            android:textColor="@color/text_primary" android:textColorHint="@color/text_muted"
+                            android:textSize="11sp" android:paddingStart="8dp" android:paddingEnd="8dp" android:singleLine="true"/>
+                        <Button android:id="@+id/btn_add_song"
+                            android:layout_width="wrap_content" android:layout_height="30dp"
+                            android:text="+ Ajouter" android:textSize="10sp"
+                            android:background="@drawable/bg_btn_icon" android:textColor="@color/gold"
+                            android:paddingStart="8dp" android:paddingEnd="8dp" android:layout_marginStart="4dp"/>
+                        <Button android:id="@+id/btn_import_lyrics"
+                            android:layout_width="wrap_content" android:layout_height="30dp"
+                            android:text="📋 Importer" android:textSize="10sp"
+                            android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"
+                            android:paddingStart="8dp" android:paddingEnd="8dp" android:layout_marginStart="4dp"/>
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg_dark4"/>
+                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_songs"
+                        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+                        android:scrollbars="vertical"/>
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg_dark4"/>
+                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_strophes"
+                        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+                        android:scrollbars="vertical" android:visibility="gone"/>
+                </LinearLayout>
+
+                <!-- ── PANEL: Announces ── -->
+                <LinearLayout android:id="@+id/panel_announce"
+                    android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:orientation="vertical" android:visibility="gone">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:padding="6dp">
+                        <Button android:id="@+id/btn_add_announce"
+                            android:layout_width="wrap_content" android:layout_height="30dp"
+                            android:text="+ Ajouter annonce" android:textSize="10sp"
+                            android:background="@drawable/bg_btn_icon" android:textColor="@color/gold"
+                            android:paddingStart="10dp" android:paddingEnd="10dp"/>
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg_dark4"/>
+                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_announces"
+                        android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:scrollbars="vertical" android:padding="4dp"/>
+                </LinearLayout>
+
+                <!-- ── PANEL: Playlist / Culte ── -->
+                <LinearLayout android:id="@+id/panel_playlist"
+                    android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:orientation="vertical" android:visibility="gone">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:padding="6dp" android:gravity="center_vertical">
+                        <Button android:id="@+id/btn_pl_new"
+                            android:layout_width="wrap_content" android:layout_height="28dp"
+                            android:text="✚ Nouveau" android:textSize="10sp"
+                            android:background="@drawable/bg_btn_icon" android:textColor="@color/gold"
+                            android:paddingStart="8dp" android:paddingEnd="8dp" android:layout_marginEnd="4dp"/>
+                        <Button android:id="@+id/btn_pl_save"
+                            android:layout_width="wrap_content" android:layout_height="28dp"
+                            android:text="💾 Sauver" android:textSize="10sp"
+                            android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"
+                            android:paddingStart="8dp" android:paddingEnd="8dp" android:layout_marginEnd="4dp"/>
+                        <Button android:id="@+id/btn_pl_load"
+                            android:layout_width="wrap_content" android:layout_height="28dp"
+                            android:text="📂 Charger" android:textSize="10sp"
+                            android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"
+                            android:paddingStart="8dp" android:paddingEnd="8dp" android:layout_marginEnd="4dp"/>
+                        <Button android:id="@+id/btn_pl_clear"
+                            android:layout_width="wrap_content" android:layout_height="28dp"
+                            android:text="🗑" android:textSize="12sp"
+                            android:background="@drawable/bg_btn_icon" android:textColor="@color/danger"
+                            android:paddingStart="8dp" android:paddingEnd="8dp"/>
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg_dark4"/>
+                    <!-- Drop zone -->
+                    <TextView android:layout_width="match_parent" android:layout_height="36dp"
+                        android:text="🎯  Glissez versets · chants · annonces · médias ici"
+                        android:textSize="11sp" android:textColor="@color/text_muted"
+                        android:gravity="center" android:background="@drawable/bg_card"
+                        android:layout_margin="6dp"/>
+                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_playlist"
+                        android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:scrollbars="vertical" android:padding="4dp"/>
+                </LinearLayout>
+
+                <!-- ── PANEL: Bibles ── -->
+                <LinearLayout android:id="@+id/panel_bibles"
+                    android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:orientation="vertical" android:visibility="gone">
+                    <!-- Built via BiblesFragment code -->
+                    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+                        <LinearLayout android:id="@+id/ll_bibles_content"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:orientation="vertical" android:padding="10dp"/>
+                    </ScrollView>
+                </LinearLayout>
+
+                <!-- ── PANEL: Settings ── -->
+                <ScrollView android:id="@+id/panel_settings"
+                    android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:visibility="gone">
+                    <LinearLayout android:id="@+id/ll_settings_content"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="10dp"/>
+                </ScrollView>
+
+                <!-- ── PANEL: Screens ── -->
+                <LinearLayout android:id="@+id/panel_screens"
+                    android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:orientation="vertical" android:visibility="gone">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:padding="6dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Gérez les écrans depuis le bouton 📺 Écrans en haut"
+                            android:textSize="12sp" android:textColor="@color/text_muted" android:gravity="center"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <View android:layout_width="1dp" android:layout_height="match_parent" android:background="@color/bg_dark4"/>
+
+        <!-- ══ RIGHT PANEL: Projection Control ══ -->
+        <ScrollView android:layout_width="@dimen/right_panel_width" android:layout_height="match_parent"
+            android:background="@color/bg_dark2" android:scrollbars="none">
+            <LinearLayout android:id="@+id/right_panel"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="10dp">
+
+                <!-- Current preview -->
+                <TextView style="@style/SectionTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="À PROJETER" android:layout_marginBottom="6dp"/>
+                <TextView android:id="@+id/tv_current_ref"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="—" android:textSize="12sp" android:textColor="@color/gold"
+                    android:fontFamily="sans-serif-medium" android:layout_marginBottom="4dp"/>
+                <TextView android:id="@+id/tv_current_text"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Aucun verset sélectionné."
+                    android:textSize="12sp" android:textColor="@color/text_primary"
+                    android:lineSpacingMultiplier="1.5" android:minHeight="60dp"
+                    android:background="@drawable/bg_card" android:padding="8dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- PROJECT button -->
+                <Button android:id="@+id/btn_project"
+                    android:layout_width="match_parent" android:layout_height="46dp"
+                    android:text="▶  PROJETER" android:textSize="14sp" android:textStyle="bold"
+                    android:textColor="@color/wsc_black" android:background="@drawable/bg_btn_project"
+                    android:letterSpacing="0.08" android:layout_marginBottom="4dp"/>
+
+                <!-- CLEAR button -->
+                <Button android:id="@+id/btn_clear"
+                    android:layout_width="match_parent" android:layout_height="32dp"
+                    android:text="⬛  Écran noir" android:textSize="11sp"
+                    android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Navigation -->
+                <TextView style="@style/SectionTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="NAVIGATION" android:layout_marginBottom="4dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="12dp">
+                    <Button android:id="@+id/btn_nav_prev"
+                        android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1"
+                        android:text="← Préc." android:textSize="10sp"
+                        android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"
+                        android:layout_marginEnd="4dp"/>
+                    <Button android:id="@+id/btn_nav_next"
+                        android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1"
+                        android:text="Suiv. →" android:textSize="10sp"
+                        android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"/>
+                </LinearLayout>
+
+                <!-- Lower Thirds -->
+                <TextView style="@style/SectionTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="LOWER THIRDS" android:layout_marginBottom="6dp"/>
+                <Spinner android:id="@+id/sp_lt_type"
+                    android:layout_width="match_parent" android:layout_height="30dp"
+                    android:entries="@array/lt_types" android:background="@drawable/bg_btn_icon"
+                    android:layout_marginBottom="4dp"/>
+                <Spinner android:id="@+id/sp_lt_style"
+                    android:layout_width="match_parent" android:layout_height="30dp"
+                    android:entries="@array/lt_styles" android:background="@drawable/bg_btn_icon"
+                    android:layout_marginBottom="4dp"/>
+                <EditText android:id="@+id/et_lt_name"
+                    android:layout_width="match_parent" android:layout_height="32dp"
+                    android:hint="Nom / Prénom" android:textSize="11sp"
+                    android:background="@drawable/bg_search" android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_muted" android:paddingStart="8dp"
+                    android:layout_marginBottom="4dp" android:singleLine="true"/>
+                <EditText android:id="@+id/et_lt_role"
+                    android:layout_width="match_parent" android:layout_height="32dp"
+                    android:hint="Rôle / Titre" android:textSize="11sp"
+                    android:background="@drawable/bg_search" android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_muted" android:paddingStart="8dp"
+                    android:layout_marginBottom="6dp" android:singleLine="true"/>
+                <TextView android:id="@+id/tv_lt_preview"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:visibility="gone" android:background="@drawable/bg_lt_bar"
+                    android:padding="8dp" android:textColor="@color/wsc_white" android:textSize="11sp"
+                    android:layout_marginBottom="4dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="12dp">
+                    <Button android:id="@+id/btn_lt_show"
+                        android:layout_width="0dp" android:layout_height="30dp" android:layout_weight="1"
+                        android:text="▼ Afficher" android:textSize="10sp"
+                        android:background="@drawable/bg_btn_icon" android:textColor="@color/gold"
+                        android:layout_marginEnd="4dp"/>
+                    <Button android:id="@+id/btn_lt_hide"
+                        android:layout_width="0dp" android:layout_height="30dp" android:layout_weight="1"
+                        android:text="✕ Masquer" android:textSize="10sp"
+                        android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"/>
+                </LinearLayout>
+
+                <!-- Logo Animation -->
+                <TextView style="@style/SectionTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="LOGO / ANIMATION" android:layout_marginBottom="4dp"/>
+                <Button android:id="@+id/btn_logo_anim"
+                    android:layout_width="match_parent" android:layout_height="30dp"
+                    android:text="✨ Diffuser animation logo" android:textSize="10sp"
+                    android:background="@drawable/bg_btn_icon" android:textColor="@color/gold"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Camera -->
+                <TextView style="@style/SectionTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CAMÉRA" android:layout_marginBottom="4dp"/>
+                <Button android:id="@+id/btn_camera"
+                    android:layout_width="match_parent" android:layout_height="30dp"
+                    android:text="📷 Caméra OFF" android:textSize="10sp"
+                    android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Background -->
+                <TextView style="@style/SectionTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ARRIÈRE-PLAN TV" android:layout_marginBottom="4dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="4dp">
+                    <Button android:id="@+id/btn_bg_black"
+                        android:layout_width="0dp" android:layout_height="28dp" android:layout_weight="1"
+                        android:text="⬛ Noir" android:textSize="9sp"
+                        android:background="@drawable/bg_slot_active" android:textColor="@color/wsc_white"
+                        android:layout_marginEnd="2dp"/>
+                    <Button android:id="@+id/btn_bg_gradient"
+                        android:layout_width="0dp" android:layout_height="28dp" android:layout_weight="1"
+                        android:text="🌅 Dégr." android:textSize="9sp"
+                        android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"
+                        android:layout_marginEnd="2dp"/>
+                    <Button android:id="@+id/btn_bg_image"
+                        android:layout_width="0dp" android:layout_height="28dp" android:layout_weight="1"
+                        android:text="🖼 Image" android:textSize="9sp"
+                        android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"/>
+                </LinearLayout>
+                <EditText android:id="@+id/et_bg_url"
+                    android:layout_width="match_parent" android:layout_height="30dp"
+                    android:hint="URL image de fond…" android:textSize="10sp"
+                    android:background="@drawable/bg_search" android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_muted" android:paddingStart="8dp"
+                    android:layout_marginBottom="12dp" android:singleLine="true"/>
+
+                <!-- Text color -->
+                <TextView style="@style/SectionTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="COULEUR TEXTE" android:layout_marginBottom="6dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="12dp">
+                    <View android:id="@+id/btn_color_white"
+                        android:layout_width="22dp" android:layout_height="22dp" android:layout_marginEnd="6dp"
+                        android:background="#FFFFFF"/>
+                    <View android:id="@+id/btn_color_gold"
+                        android:layout_width="22dp" android:layout_height="22dp" android:layout_marginEnd="6dp"
+                        android:background="#FDE68A"/>
+                    <View android:id="@+id/btn_color_green"
+                        android:layout_width="22dp" android:layout_height="22dp" android:layout_marginEnd="6dp"
+                        android:background="#BBF7D0"/>
+                    <View android:id="@+id/btn_color_blue"
+                        android:layout_width="22dp" android:layout_height="22dp" android:layout_marginEnd="6dp"
+                        android:background="#BFDBFE"/>
+                    <View android:id="@+id/btn_color_red"
+                        android:layout_width="22dp" android:layout_height="22dp"
+                        android:background="#FCA5A5"/>
+                </LinearLayout>
+
+                <!-- Font size -->
+                <TextView style="@style/SectionTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="TAILLE POLICE" android:layout_marginBottom="4dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="12dp">
+                    <Button android:id="@+id/btn_fs_s"
+                        android:layout_width="0dp" android:layout_height="28dp" android:layout_weight="1"
+                        android:text="S" android:textSize="10sp"
+                        android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted" android:layout_marginEnd="2dp"/>
+                    <Button android:id="@+id/btn_fs_m"
+                        android:layout_width="0dp" android:layout_height="28dp" android:layout_weight="1"
+                        android:text="M" android:textSize="10sp"
+                        android:background="@drawable/bg_slot_active" android:textColor="@color/wsc_white" android:layout_marginEnd="2dp"/>
+                    <Button android:id="@+id/btn_fs_l"
+                        android:layout_width="0dp" android:layout_height="28dp" android:layout_weight="1"
+                        android:text="L" android:textSize="10sp"
+                        android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted" android:layout_marginEnd="2dp"/>
+                    <Button android:id="@+id/btn_fs_xl"
+                        android:layout_width="0dp" android:layout_height="28dp" android:layout_weight="1"
+                        android:text="XL" android:textSize="10sp"
+                        android:background="@drawable/bg_btn_icon" android:textColor="@color/text_muted"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>
