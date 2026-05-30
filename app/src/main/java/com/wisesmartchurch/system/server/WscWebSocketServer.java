@@ -137,4 +137,3 @@ public class WscWebSocketServer extends NanoWSD {
         String getScreenId()  { return screenId; }
     }
 }
-}
