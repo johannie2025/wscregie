@@ -113,11 +113,18 @@ public class WscWebSocketServer extends NanoWSD {
             } catch (Exception e) { Log.w(TAG, "onMessage: " + e.getMessage()); }
         }
 
-		@Override
-		protected void onClose(NanoWSD.WebSocketFrame.CloseCode code, String reason, boolean init) {
+        @Override
+        protected void onClose(NanoWSD.WebSocketFrame.CloseCode code, String reason, boolean init) {
+            clients.remove(clientId);
+            Log.i(TAG, "Client déconnecté: " + clientId);
+            if (callback != null) callback.onClientDisconnected(clientId);
+        } // <--- Cette accolade fermante était manquante!
 
-        @Override protected void onPong(WebSocketFrame f) {}
-        @Override protected void onException(IOException e) {
+        @Override 
+        protected void onPong(WebSocketFrame f) {}
+
+        @Override 
+        protected void onException(IOException e) {
             clients.remove(clientId);
             if (callback != null) callback.onClientDisconnected(clientId);
         }
@@ -125,7 +132,9 @@ public class WscWebSocketServer extends NanoWSD {
         boolean matchesTarget(String target) {
             return screenId.equalsIgnoreCase(target) || screenRole.equalsIgnoreCase(target);
         }
+
         String getClientIp() { return clientIp; }
         String getScreenId()  { return screenId; }
     }
+}
 }
