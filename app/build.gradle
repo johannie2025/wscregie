@@ -47,8 +47,7 @@ android {
 import java.net.URL
 
 afterEvaluate {
-    def aarUrl = 'https://YOUR_BACKUP_SERVER_OR_MIRROR/ffmpeg-kit-full-gpl-5.1.LTS.aar'
-    def aarFile = file("${rootDir}/app/libs/ffmpeg-kit-full-gpl-5.1.LTS.aar")
+def aarUrl = 'https://artifactory.appodeal.com/appodeal-public/com/arthenica/ffmpeg-kit-full-gpl/5.1.LTS/ffmpeg-kit-full-gpl-5.1.LTS.aar'    def aarFile = file("${rootDir}/app/libs/ffmpeg-kit-full-gpl-5.1.LTS.aar")
 
     tasks.register("downloadFfmpegAar") {
         doLast {
