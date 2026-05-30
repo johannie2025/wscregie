@@ -1,3 +1,5 @@
+import java.net.URL
+
 plugins {
     id 'com.android.application'
 }
@@ -42,27 +44,49 @@ android {
         resources.excludes.add("META-INF/*.kotlin_module")
         resources.excludes.add("META-INF/DEPENDENCIES")
     }
+
+    // Configuration requise pour lire le fichier AAR téléchargé localement
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
-import java.net.URL
-
 afterEvaluate {
-def aarUrl = 'https://artifactory.appodeal.com/appodeal-public/com/arthenica/ffmpeg-kit-full-gpl/5.1.LTS/ffmpeg-kit-full-gpl-5.1.LTS.aar'    def aarFile = file("${rootDir}/app/libs/ffmpeg-kit-full-gpl-5.1.LTS.aar")
+    // Utilisation d'un miroir public actif pour récupérer le binaire supprimé de Maven Central
+    def aarUrl = 'https://artifactory.appodeal.com/appodeal-public/com/arthenica/ffmpeg-kit-full-gpl/5.1.LTS/ffmpeg-kit-full-gpl-5.1.LTS.aar'
+    def aarFile = file("${rootDir}/app/libs/ffmpeg-kit-full-gpl-5.1.LTS.aar")
 
     tasks.register("downloadFfmpegAar") {
+        inputs.property("url", aarUrl)
+        outputs.file(aarFile)
+
         doLast {
-            if (!aarFile.parentFile.exists()) {
-                aarFile.parentFile.mkdirs()
-            }
             if (!aarFile.exists()) {
-                println "⏬ Downloading FFmpeg-Kit AAR from backup mirror..."
-                new URL(aarUrl).withInputStream { i -> aarFile.withOutputStream { it << i } }
-                println "✅ AAR downloaded successfully."
+                println "⏬ Downloading FFmpeg-Kit AAR from public backup mirror..."
+                aarFile.parentFile.mkdirs()
+                try {
+                    new URL(aarUrl).withInputStream { downloadStream ->
+                        aarFile.withOutputStream { fileStream ->
+                            fileStream << downloadStream
+                        }
+                    }
+                    println "✅ Download complete: ${aarFile.absolutePath}"
+                } catch (Exception e) {
+                    throw new GradleException("🔴 Failed to download FFmpeg AAR: " + e.getMessage(), e)
+                }
+            } else {
+                println "✨ FFmpeg-Kit AAR already cached locally."
             }
         }
     }
-    // Force preBuild to wait for the download step
-    preBuild.dependsOn("downloadFfmpegAar")
+
+    if (tasks.findByName("preBuild")) {
+        tasks.named("preBuild").configure {
+            dependsOn "downloadFfmpegAar"
+        }
+    }
 }
 
 dependencies {
@@ -105,6 +129,7 @@ dependencies {
     // RTMP/RTSP streaming — version correcte sur JitPack
     implementation 'com.github.pedroSG94.RootEncoder:library:2.4.5'
 
-    // FFmpegKit — version LTS disponible sur Maven Central
-    implementation 'com.arthenica:ffmpeg-kit-full-gpl:5.1.LTS'
+    // FFmpegKit — Consommation de l'AAR local récupéré dynamiquement par la tâche ci-dessus
+    implementation(name: 'ffmpeg-kit-full-gpl-5.1.LTS', ext: 'aar')
+    implementation 'com.arthenica:smart-exception-java:0.2.1'
 }
